@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookYourVisit.Domain.Salons;
+﻿namespace BookYourVisit.Domain.Salons;
 public class Address
 {
     public Guid Id { get; private set; }
@@ -12,7 +6,8 @@ public class Address
     public string City { get; private set; } = null!;
     public string Street { get; private set; } = null!;
     public string StreetNumber { get; private set; } = null!;
-    public string PostalCode { get; private set; }
+    public string PostalCode { get; private set; } = null!;
+    public bool IsDelete { get; private set; } = false;
     public Guid SalonId { get; private set; }
 
     public Address(
