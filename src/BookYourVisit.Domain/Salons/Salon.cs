@@ -1,8 +1,9 @@
-﻿using BookYourVisit.Domain.Addresses;
-using BookYourVisit.Domain.Reviews;
+﻿using BookYourVisit.Domain.Reviews;
 using BookYourVisit.Domain.Services;
 using BookYourVisit.Domain.Workers;
 using BookYourVisit.Domain.WorkingSlots;
+using ErrorOr;
+using Throw;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,13 @@ using System.Net;
 namespace BookYourVisit.Domain.Salons;
 public class Salon
 {
+    public List<Guid> _reviewIds = new();
+    public List<Guid> _serviceIds = new();
+    public List<Guid> _workerIds = new();
+    public List<Guid> _workingSlotIds = new();
+
+    public Address Address { get; private set; } = null!;
+
     public Guid Id { get; private set; }
     public string Name { get; private set; } = null!;
     public string Description { get; private set; } = null!;
@@ -24,12 +32,6 @@ public class Salon
     public float Longitude { get; private set; }
     public bool IsDelete { get; private set; } = false;
 
-    public Address Address { get; private set; } = null!;
-    public IEnumerable<Review> Reviews { get; private set; } = Enumerable.Empty<Review>();
-    public IEnumerable<Service> Services { get; private set; } = Enumerable.Empty<Service>();
-    public IEnumerable<Worker> Workers { get; private set; } = Enumerable.Empty<Worker>();
-    public IEnumerable<WorkingSlot> WorkingSlots { get; private set; } = Enumerable.Empty<WorkingSlot>();
-
     public Salon(
         string name,
         string description,
@@ -38,7 +40,7 @@ public class Salon
         int phoneNumber,
         string email,
         float latitude,
-    float longitute,
+        float longitute,
         Address address,
         Guid? id = null)
     {
@@ -53,5 +55,4 @@ public class Salon
         Longitude = longitute;
         Address = address;
     }
-
 }
