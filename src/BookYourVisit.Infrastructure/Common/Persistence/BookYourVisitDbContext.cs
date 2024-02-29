@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookYourVisit.Infrastructure.Persistence;
+namespace BookYourVisit.Infrastructure.Common.Persistence;
 public class BookYourVisitDbContext : DbContext
 {
     public DbSet<Absence> Absences { get; set; } = null!;
@@ -27,6 +27,7 @@ public class BookYourVisitDbContext : DbContext
     public DbSet<Visit> Visits { get; set; } = null!;
     public DbSet<Worker> Workers { get; set; } = null!;
     public DbSet<WorkingSlot> WorkingSlots { get; set; } = null!;
+
     public BookYourVisitDbContext(DbContextOptions options) : base(options)
     {
     }
