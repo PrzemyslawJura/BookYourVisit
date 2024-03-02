@@ -27,4 +27,7 @@ public class Address
         PostalCode = postalCode;
         SalonId = salonId;
     }
+    private Address()
+    {
+    }
 }

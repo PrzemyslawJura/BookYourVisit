@@ -29,4 +29,7 @@ public class Visit
         WorkerId = workerId;
         UserId = userId;
     }
+    private Visit()
+    {
+    }
 }

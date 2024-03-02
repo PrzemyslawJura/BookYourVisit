@@ -41,4 +41,7 @@ public class Salon
         Longitude = longitute;
         AddressId = addressId;
     }
+    private Salon()
+    {
+    }
 }

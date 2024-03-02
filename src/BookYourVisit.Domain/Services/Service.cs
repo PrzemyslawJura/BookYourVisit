@@ -29,4 +29,7 @@ public class Service
         SalonId = salonId;
         WorkerId = workerId;
     }
+    private Service()
+    {
+    }
 }

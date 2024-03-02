@@ -21,4 +21,7 @@ public class Review
         SalonId = salonId;
         UserId = userId;
     }
+    private Review()
+    {
+    }
 }

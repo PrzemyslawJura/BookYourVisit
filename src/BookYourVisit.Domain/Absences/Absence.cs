@@ -21,4 +21,8 @@ public class Absence
         DataTo = dataTo;
         WorkerId = workerId;
     }
+
+    private Absence() 
+    {
+    }
 }

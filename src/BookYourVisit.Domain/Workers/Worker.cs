@@ -27,4 +27,7 @@ public class Worker
         PhoneNumber = phoneNumber;
         SalonId = salonId;
     }
+    private Worker()
+    {
+    }
 }

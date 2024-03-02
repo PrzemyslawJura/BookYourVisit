@@ -21,4 +21,7 @@ public class Message
         Data = data;
         VisitId = visitId;
     }
+    private Message()
+    {
+    }
 }

@@ -21,4 +21,7 @@ public class WorkingSlot
         HourTo = hourTo;
         SalonId = salonId;
     }
+    private WorkingSlot()
+    {
+    }
 }
