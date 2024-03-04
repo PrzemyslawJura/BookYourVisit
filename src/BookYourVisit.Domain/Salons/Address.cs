@@ -10,6 +10,8 @@ public class Address
     public bool IsDelete { get; private set; } = false;
     public Guid SalonId { get; private set; }
 
+    public Salon Salon { get; private set; }
+
     public Address(
         string country,
         string city,

@@ -1,4 +1,6 @@
-﻿namespace BookYourVisit.Domain.WorkingSlots;
+﻿using BookYourVisit.Domain.Salons;
+
+namespace BookYourVisit.Domain.WorkingSlots;
 public class WorkingSlot
 {
     public Guid Id { get; private set; }
@@ -7,6 +9,8 @@ public class WorkingSlot
     public float HourTo { get; private set; }
     public bool IsDelete { get; private set; } = false;
     public Guid SalonId { get; private set; }
+
+    public Salon Salon { get; private set; }
 
     public WorkingSlot(
         DayOfWeek dayOfWeek,

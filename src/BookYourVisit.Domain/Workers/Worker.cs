@@ -1,4 +1,8 @@
-﻿namespace BookYourVisit.Domain.Workers;
+﻿using BookYourVisit.Domain.Absences;
+using BookYourVisit.Domain.Salons;
+using BookYourVisit.Domain.Services;
+
+namespace BookYourVisit.Domain.Workers;
 public class Worker
 {
     public List<Guid> _serviceIds = new();
@@ -11,6 +15,10 @@ public class Worker
     public int PhoneNumber { get; private set; }
     public bool IsDelete { get; private set; } = false;
     public Guid SalonId { get; private set; }
+
+    public IEnumerable<Absence>? Absences { get; private set; }
+    public IEnumerable<Service> Services { get; private set; }
+    public Salon Salon { get; private set; }
 
     public Worker(
         string firstName,

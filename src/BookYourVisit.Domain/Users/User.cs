@@ -1,4 +1,7 @@
-﻿namespace BookYourVisit.Domain.Users;
+﻿using BookYourVisit.Domain.Reviews;
+using BookYourVisit.Domain.Visits;
+
+namespace BookYourVisit.Domain.Users;
 public class User
 {
     public List<Guid> _reviewIds = new();
@@ -10,6 +13,9 @@ public class User
     public string Email { get; private set; } = null!;
     public int PhoneNumber { get; private set; }
     public bool IsDelete { get; private set; } = false;
+
+    public IEnumerable<Review> Reviews { get; private set; }
+    public IEnumerable<Visit> Visits { get; private set; }
 
     public User(
         string firstName,

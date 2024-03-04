@@ -1,8 +1,12 @@
-﻿namespace BookYourVisit.Domain.Salons;
+﻿using BookYourVisit.Domain.Reviews;
+using BookYourVisit.Domain.Services;
+using BookYourVisit.Domain.Workers;
+using BookYourVisit.Domain.WorkingSlots;
+
+namespace BookYourVisit.Domain.Salons;
 public class Salon
 {
     public List<Guid> _reviewIds = new();
-    public List<Guid> _serviceIds = new();
     public List<Guid> _workerIds = new();
     public List<Guid> _workingSlotIds = new();
 
@@ -16,7 +20,11 @@ public class Salon
     public float Latitude { get; private set; }
     public float Longitude { get; private set; }
     public bool IsDelete { get; private set; } = false;
-    public Guid AddressId { get; private set; }
+
+    public Address Address { get; private set; }
+    public IEnumerable<Review> Reviews { get; private set; }
+    public IEnumerable<Worker> Workers { get; private set; }
+    public IEnumerable<WorkingSlot> WorkingSlots { get; private set; }
 
     public Salon(
         string name,
@@ -27,7 +35,6 @@ public class Salon
         string email,
         float latitude,
         float longitute,
-        Guid addressId,
         Guid? id = null)
     {
         Id = id ?? Guid.NewGuid();
@@ -39,7 +46,6 @@ public class Salon
         Email = email;
         Latitude = latitude;
         Longitude = longitute;
-        AddressId = addressId;
     }
     private Salon()
     {

@@ -1,4 +1,6 @@
-﻿namespace BookYourVisit.Domain.Absences;
+﻿using BookYourVisit.Domain.Workers;
+
+namespace BookYourVisit.Domain.Absences;
 public class Absence
 {
     public Guid Id { get; private set; }
@@ -7,6 +9,8 @@ public class Absence
     public DateTime DataTo { get; private set; }
     public bool IsDelete { get; private set; } = false;
     public Guid WorkerId { get; private set; }
+
+    public Worker Worker { get; private set; }
 
     public Absence(
         string reason,

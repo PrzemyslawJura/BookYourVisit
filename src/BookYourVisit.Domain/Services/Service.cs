@@ -1,4 +1,7 @@
-﻿namespace BookYourVisit.Domain.Services;
+﻿using BookYourVisit.Domain.Visits;
+using BookYourVisit.Domain.Workers;
+
+namespace BookYourVisit.Domain.Services;
 public class Service
 {
     public List<Guid> _visitIds = new();
@@ -9,15 +12,16 @@ public class Service
     public float Price { get; private set; }
     public int Time { get; private set; }
     public bool IsDelete { get; private set; } = false;
-    public Guid SalonId { get; private set; }
     public Guid WorkerId { get; private set; }
+
+    public Worker Worker { get; private set; }
+    public IEnumerable<Visit> Visits { get; private set; }
 
     public Service(
         string name,
         string description,
         float price,
         int time,
-        Guid salonId,
         Guid workerId,
         Guid? id = null)
     {
@@ -26,7 +30,6 @@ public class Service
         Description = description;
         Price = price;
         Time = time;
-        SalonId = salonId;
         WorkerId = workerId;
     }
     private Service()
