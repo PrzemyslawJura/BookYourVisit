@@ -15,7 +15,7 @@ public class Salon
     public string Description { get; private set; } = null!;
     public string MainPhoto { get; private set; } = null!;
     public string Photos { get; private set; } = null!;
-    public int PhoneNumber { get; private set; }
+    public string PhoneNumber { get; private set; }
     public string Email { get; private set; } = null!;
     public float Latitude { get; private set; }
     public float Longitude { get; private set; }
@@ -31,7 +31,7 @@ public class Salon
         string description,
         string mainPhoto,
         string photos,
-        int phoneNumber,
+        string phoneNumber,
         string email,
         float latitude,
         float longitute,

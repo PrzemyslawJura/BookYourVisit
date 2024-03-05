@@ -11,7 +11,7 @@ public class User
     public string FirstName { get; private set; } = null!;
     public string SecondName { get; private set; } = null!;
     public string Email { get; private set; } = null!;
-    public int PhoneNumber { get; private set; }
+    public string PhoneNumber { get; private set; }
     public bool IsDelete { get; private set; } = false;
 
     public IEnumerable<Review> Reviews { get; private set; }
@@ -21,7 +21,7 @@ public class User
         string firstName,
         string secondName,
         string email,
-        int phoneNumber,
+        string phoneNumber,
         Guid? id = null)
     {
         Id = id ?? Guid.NewGuid();

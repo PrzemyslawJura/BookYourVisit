@@ -10,6 +10,7 @@ public class Service
     public string Name { get; private set; } = null!;
     public string Description { get; private set; } = null!;
     public float Price { get; private set; }
+    public string Currency {  get; private set; }
     public int Time { get; private set; }
     public bool IsDelete { get; private set; } = false;
     public Guid WorkerId { get; private set; }
@@ -21,6 +22,7 @@ public class Service
         string name,
         string description,
         float price,
+        string currency,
         int time,
         Guid workerId,
         Guid? id = null)
@@ -29,6 +31,7 @@ public class Service
         Name = name;
         Description = description;
         Price = price;
+        Currency = currency;
         Time = time;
         WorkerId = workerId;
     }

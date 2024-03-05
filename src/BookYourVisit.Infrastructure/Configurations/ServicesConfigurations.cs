@@ -20,6 +20,9 @@ public class ServicesConfigurations : IEntityTypeConfiguration<Service>
         builder.Property(x => x.Description)
             .HasMaxLength(250);
 
+        builder.Property(x => x.Currency)
+            .HasMaxLength(3);
+
         builder.Property(x => x.Time)
             .HasMaxLength(4);
 

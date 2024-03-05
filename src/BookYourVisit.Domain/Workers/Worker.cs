@@ -12,7 +12,7 @@ public class Worker
     public string FirstName { get; private set; } = null!;
     public string SecondName { get; private set; } = null!;
     public string Email { get; private set; } = null!;
-    public int PhoneNumber { get; private set; }
+    public string PhoneNumber { get; private set; }
     public bool IsDelete { get; private set; } = false;
     public Guid SalonId { get; private set; }
 
@@ -24,7 +24,7 @@ public class Worker
         string firstName,
         string secondName,
         string email,
-        int phoneNumber,
+        string phoneNumber,
         Guid salonId,
         Guid? id = null)
     {
