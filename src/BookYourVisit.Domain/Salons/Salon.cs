@@ -1,7 +1,8 @@
 ﻿using BookYourVisit.Domain.Reviews;
-using BookYourVisit.Domain.Services;
 using BookYourVisit.Domain.Workers;
 using BookYourVisit.Domain.WorkingSlots;
+using ErrorOr;
+using Throw;
 
 namespace BookYourVisit.Domain.Salons;
 public class Salon
@@ -49,5 +50,59 @@ public class Salon
     }
     private Salon()
     {
+    }
+    public ErrorOr<Success> AddReview(Review review)
+    {
+        _reviewIds.Throw().IfContains(review.Id);
+
+        _reviewIds.Add(review.Id);
+
+        return Result.Success;
+    }
+    public bool HasReview(Guid reviewId)
+    {
+        return _reviewIds.Contains(reviewId);
+    }
+    public void RemoveReview(Guid reviewId)
+    {
+        _reviewIds.Throw().IfNotContains(reviewId);
+
+        _reviewIds.Remove(reviewId);
+    }
+    public ErrorOr<Success> AddWorker(Worker worker)
+    {
+        _workerIds.Throw().IfContains(worker.Id);
+
+        _workerIds.Add(worker.Id);
+
+        return Result.Success;
+    }
+    public bool HasWorker(Guid workerId)
+    {
+        return _workerIds.Contains(workerId);
+    }
+    public void RemoveWorker(Guid workerId)
+    {
+        _workerIds.Throw().IfNotContains(workerId);
+
+        _workerIds.Remove(workerId);
+    }
+    public ErrorOr<Success> AddWorkingSlot(WorkingSlot workingSlot)
+    {
+        _workingSlotIds.Throw().IfContains(workingSlot.Id);
+
+        _workingSlotIds.Add(workingSlot.Id);
+
+        return Result.Success;
+    }
+    public bool HasWorkingSlot(Guid workingSlotId)
+    {
+        return _workingSlotIds.Contains(workingSlotId);
+    }
+    public void RemoveWorkingSlot(Guid workingSlotId)
+    {
+        _workingSlotIds.Throw().IfNotContains(workingSlotId);
+
+        _workingSlotIds.Remove(workingSlotId);
     }
 }

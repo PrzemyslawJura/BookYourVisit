@@ -1,5 +1,7 @@
 ﻿using BookYourVisit.Domain.Visits;
 using BookYourVisit.Domain.Workers;
+using ErrorOr;
+using Throw;
 
 namespace BookYourVisit.Domain.Services;
 public class Service
@@ -37,5 +39,23 @@ public class Service
     }
     private Service()
     {
+    }
+    public ErrorOr<Success> AddVisit(Visit visit)
+    {
+        _visitIds.Throw().IfContains(visit.Id);
+
+        _visitIds.Add(visit.Id);
+
+        return Result.Success;
+    }
+    public bool HasVisit(Guid visitId)
+    {
+        return _visitIds.Contains(visitId);
+    }
+    public void RemoveVisit(Guid visitId)
+    {
+        _visitIds.Throw().IfNotContains(visitId);
+
+        _visitIds.Remove(visitId);
     }
 }

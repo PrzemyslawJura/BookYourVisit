@@ -1,5 +1,7 @@
 ﻿using BookYourVisit.Domain.Reviews;
 using BookYourVisit.Domain.Visits;
+using ErrorOr;
+using Throw;
 
 namespace BookYourVisit.Domain.Users;
 public class User
@@ -32,5 +34,41 @@ public class User
     }
     private User()
     {
+    }
+    public ErrorOr<Success> AddReview(Review review)
+    {
+        _reviewIds.Throw().IfContains(review.Id);
+
+        _reviewIds.Add(review.Id);
+
+        return Result.Success;
+    }
+    public bool HasReview(Guid reviewId)
+    {
+        return _reviewIds.Contains(reviewId);
+    }
+    public void RemoveReview(Guid reviewId)
+    {
+        _reviewIds.Throw().IfNotContains(reviewId);
+
+        _reviewIds.Remove(reviewId);
+    }
+    public ErrorOr<Success> AddVisit(Visit visit)
+    {
+        _visitIds.Throw().IfContains(visit.Id);
+
+        _visitIds.Add(visit.Id);
+
+        return Result.Success;
+    }
+    public bool HasVisit(Guid visitId)
+    {
+        return _visitIds.Contains(visitId);
+    }
+    public void RemoveVisit(Guid visitId)
+    {
+        _visitIds.Throw().IfNotContains(visitId);
+
+        _visitIds.Remove(visitId);
     }
 }

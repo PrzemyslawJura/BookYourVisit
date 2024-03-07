@@ -1,6 +1,8 @@
 ﻿using BookYourVisit.Domain.Messages;
 using BookYourVisit.Domain.Services;
 using BookYourVisit.Domain.Users;
+using ErrorOr;
+using Throw;
 
 namespace BookYourVisit.Domain.Visits;
 public class Visit
@@ -19,7 +21,6 @@ public class Visit
     public Service Service { get; private set; }
     public User User { get; private set; }
 
-
     public Visit(
         DateTime dateFrom,
         DateTime dateTo,
@@ -37,5 +38,23 @@ public class Visit
     }
     private Visit()
     {
+    }
+    public ErrorOr<Success> AddMessage(Message message)
+    {
+        _messageIds.Throw().IfContains(message.Id);
+
+        _messageIds.Add(message.Id);
+
+        return Result.Success;
+    }
+    public bool HasMessage(Guid messageId)
+    {
+        return _messageIds.Contains(messageId);
+    }
+    public void RemoveMessage(Guid messageId)
+    {
+        _messageIds.Throw().IfNotContains(messageId);
+
+        _messageIds.Remove(messageId);
     }
 }
