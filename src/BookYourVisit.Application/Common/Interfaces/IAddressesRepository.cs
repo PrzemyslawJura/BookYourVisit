@@ -3,8 +3,8 @@
 namespace BookYourVisit.Application.Common.Interfaces;
 public interface IAddressesRepository
 {
-    Task AddAddressAsync(Address absence);
-    Task UpdateAsync(Address absence);
-    Task<Address?> GetBySalonIdAsync(Guid SalonId);
-    Task RemoveAddressAsync(Address absence);
+    Task AddAddressAsync(Address address);
+    Task UpdateAsync(Address address);
+    Task<Address?> GetBySalonIdAsync(Guid salonId);
+    Task RemoveAddressAsync(Address address);
 }

@@ -9,5 +9,5 @@ public interface IVisitsRepository
     Task<List<Visit?>> ListByServiceIdAsync(Guid serviceId);
     Task<List<Visit?>> ListByUserIdAsync(Guid userId);
     Task RemoveVisitAsync(Visit visit);
-    Task RemoveVisitsAsync(List<Visit> visit);
+    Task RemoveVisitsAsync(List<Visit> visits);
 }
