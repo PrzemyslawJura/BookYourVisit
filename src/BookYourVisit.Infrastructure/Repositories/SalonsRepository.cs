@@ -18,9 +18,23 @@ public class SalonsRepository : ISalonsRepository
         await _dbContext.Salons.AddAsync(salon);
     }
 
+    public async Task<int> Count()
+    {
+        return await _dbContext.Salons.CountAsync();
+    }
+
     public async Task<Salon?> GetByIdAsync(Guid id)
     {
         return await _dbContext.Salons.FirstOrDefaultAsync(salon => salon.Id == id);
+    }
+
+    public async Task<List<Salon?>> ListSalonsAsync(int skip, int take)
+    {
+        return await _dbContext.Salons
+            .AsNoTracking()
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync<Salon?>();
     }
 
     public Task RemoveReviewAsync(Salon salon)
