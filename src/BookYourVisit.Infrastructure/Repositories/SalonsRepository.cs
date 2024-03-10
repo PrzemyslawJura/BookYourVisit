@@ -28,12 +28,15 @@ public class SalonsRepository : ISalonsRepository
         return await _dbContext.Salons.FirstOrDefaultAsync(salon => salon.Id == id);
     }
 
-    public async Task<List<Salon?>> ListSalonsAsync(int skip, int take)
+    public async Task<List<Salon?>> ListSalonsAsync(int page, int pageSize)
     {
         return await _dbContext.Salons
+            .Include(salon => salon.Address)
+            .Include(salon => salon.Workers)
+                .ThenInclude(worker => worker.Services)
             .AsNoTracking()
-            .Skip(skip)
-            .Take(take)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync<Salon?>();
     }
 

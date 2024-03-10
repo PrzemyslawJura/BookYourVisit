@@ -3,4 +3,4 @@ using ErrorOr;
 using MediatR;
 
 namespace BookYourVisit.Application.Queries.Salons.ListSalons;
-public record ListSalonsQuery(int skip, int take) : IRequest<ErrorOr<List<Salon?>>>;
+public record ListSalonsQuery(int page, int pageSize) : IRequest<ErrorOr<List<Salon?>>>;

@@ -20,6 +20,6 @@ public class ListSalonsQueryHandler : IRequestHandler<ListSalonsQuery, ErrorOr<L
             return Error.NotFound(description: "Salons not found");
         }
 
-        return await _salonsRepository.ListSalonsAsync(request.skip, request.take);
+        return await _salonsRepository.ListSalonsAsync(request.page, request.pageSize);
     }
 }

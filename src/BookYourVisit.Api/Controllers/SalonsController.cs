@@ -27,9 +27,9 @@ public class SalonsController : Controller
     //}
 
     [HttpGet]
-    public async Task<IActionResult> ListSalons(int skip, int take)
+    public async Task<IActionResult> ListSalons(int page, int pageSize)
     {
-        var command = new ListSalonsQuery(skip, take);
+        var command = new ListSalonsQuery(page, pageSize);
 
         var listSalonsResult = await _mediator.Send(command);
 
