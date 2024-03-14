@@ -1,4 +1,4 @@
-namespace BookYourVisitTests;
+namespace BookYourVisit.Tests.Unit;
 
 public class UnitTest1
 {
