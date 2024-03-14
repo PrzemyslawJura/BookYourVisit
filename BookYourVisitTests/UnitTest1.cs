@@ -1,4 +1,4 @@
-namespace tests;
+namespace BookYourVisitTests;
 
 public class UnitTest1
 {
