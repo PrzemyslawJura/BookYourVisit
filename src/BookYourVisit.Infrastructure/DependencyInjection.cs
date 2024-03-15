@@ -17,20 +17,17 @@ public static class DependencyInjection
     {
         services.AddDbContext<BookYourVisitDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-       // services.AddDbContext<BookYourVisitDbContext>(options =>
-        //    options.UseSqlServer(("Data Source = BookYourVisit.db"),
-         //   b => b.MigrationsAssembly("BookYourVisit.Infrastructure")));
 
         services.AddScoped<IAbsencesRepository, AbsencesRepository>();
-        //services.AddScoped<IAddressesRepository, AddressesRepository>();
-        //services.AddScoped<IMessagesRepository, MessagesRepository>();
-        //services.AddScoped<IReviewsRepository, ReviewsRepository>();
-        //services.AddScoped<ISalonsRepository, SalonsRepository>();
-        //services.AddScoped<IServicesRepository, ServicesRepository>();
-        //services.AddScoped<IUsersRepository, UsersRepository>();
-        //services.AddScoped<IVisitsRepository, VisitsRepository>();
-        //services.AddScoped<IWorkersRepository, WorkersRepository>();
-        //services.AddScoped<IWorkingSlotsRepository, WorkingSlotsRepository>();
+        services.AddScoped<IAddressesRepository, AddressesRepository>();
+        services.AddScoped<IMessagesRepository, MessagesRepository>();
+        services.AddScoped<IReviewsRepository, ReviewsRepository>();
+        services.AddScoped<ISalonsRepository, SalonsRepository>();
+        services.AddScoped<IServicesRepository, ServicesRepository>();
+        services.AddScoped<IUsersRepository, UsersRepository>();
+        services.AddScoped<IVisitsRepository, VisitsRepository>();
+        services.AddScoped<IWorkersRepository, WorkersRepository>();
+        services.AddScoped<IWorkingSlotsRepository, WorkingSlotsRepository>();
         return services;
     }
 }

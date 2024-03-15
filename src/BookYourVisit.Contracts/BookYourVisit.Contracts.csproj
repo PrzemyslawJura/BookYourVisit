@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Absences\" />
+    <Folder Include="Addresses\" />
+    <Folder Include="Messages\" />
+    <Folder Include="Reviews\" />
+    <Folder Include="Salons\" />
+    <Folder Include="Services\" />
+    <Folder Include="Users\" />
+    <Folder Include="Visits\" />
+    <Folder Include="Workers\" />
+    <Folder Include="WorkingSlots\" />
+  </ItemGroup>
+
 </Project>

@@ -1,11 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BookYourVisit.Domain\BookYourVisit.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Command\Absences\" />
+    <Folder Include="Command\Messages\" />
+    <Folder Include="Command\Addresses\" />
+    <Folder Include="Command\WorkingSlots\" />
+    <Folder Include="Command\Workers\" />
+    <Folder Include="Command\Visits\" />
+    <Folder Include="Command\Users\" />
+    <Folder Include="Command\Services\" />
+    <Folder Include="Command\Salons\" />
+    <Folder Include="Command\Reviews\" />
+    <Folder Include="Queries\Absences\" />
+    <Folder Include="Queries\Addresses\" />
+    <Folder Include="Queries\Messages\" />
+    <Folder Include="Queries\Reviews\" />
+    <Folder Include="Queries\Services\" />
+    <Folder Include="Queries\Users\" />
+    <Folder Include="Queries\Visits\" />
+    <Folder Include="Queries\Workers\" />
+    <Folder Include="Queries\WorkingSlots\" />
   </ItemGroup>
 
   <PropertyGroup>
