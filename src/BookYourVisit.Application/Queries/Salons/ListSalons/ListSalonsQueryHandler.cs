@@ -15,11 +15,13 @@ public class ListSalonsQueryHandler : IRequestHandler<ListSalonsQuery, ErrorOr<L
 
     public async Task<ErrorOr<List<Salon?>>> Handle(ListSalonsQuery request, CancellationToken cancellationToken)
     {
-        if (await _salonsRepository.Count() == 0)
+        var result = _salonsRepository.ListSalonsAsync(request.page, request.pageSize);
+
+        if (!result.Result.Any())
         {
             return Error.NotFound(description: "Salons not found");
         }
 
-        return await _salonsRepository.ListSalonsAsync(request.page, request.pageSize);
+        return await result;
     }
 }

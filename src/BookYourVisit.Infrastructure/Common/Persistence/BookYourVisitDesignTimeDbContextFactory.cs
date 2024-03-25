@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
 namespace BookYourVisit.Infrastructure.Common.Persistence;
@@ -8,7 +8,7 @@ public class BookYourVisitDesignTimeDbContextFactory : IDesignTimeDbContextFacto
     public BookYourVisitDbContext CreateDbContext(string[] args)
     {
         IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory().Replace("Infrastructure","Api"))
+            .SetBasePath(Directory.GetCurrentDirectory().Replace("Infrastructure", "Api"))
             .AddJsonFile("appsettings.json")
             .Build();
 

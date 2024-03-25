@@ -33,6 +33,11 @@ public class SalonsController : Controller
 
         var listSalonsResult = await _mediator.Send(command);
 
+        if (listSalonsResult.IsError == true)
+        {
+            return NotFound();
+        }
+
         return Ok(listSalonsResult);
     }
 

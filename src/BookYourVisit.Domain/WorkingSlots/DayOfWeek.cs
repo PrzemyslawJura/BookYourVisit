@@ -7,5 +7,5 @@ public enum DayOfWeek
     Thursday = 3,
     Friday = 4,
     Saturday = 5,
-    Sunday = 6 
+    Sunday = 6
 }

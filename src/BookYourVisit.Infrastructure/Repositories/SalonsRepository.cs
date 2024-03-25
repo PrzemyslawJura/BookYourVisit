@@ -25,8 +25,8 @@ public class SalonsRepository : ISalonsRepository
 
     public async Task<Salon?> GetByIdAsync(Guid id)
     {
-        return await _dbContext.Salons.FirstOrDefaultAsync(salon => salon.Id == id);
-    }
+        return await _dbContext.Salons.FindAsync(id); //FindAsync zamiast FirstOrDefault, findasync jescli wie ze nic sie na db nie zmienilo to nie robi strzała do db i oddaje ten obiekt działa szybciej 
+    }                                                   //Finds an entity with the given primary key values. If an entity with the given primary key values is being tracked by the context, then it is returned immediately without making a request to the database
 
     public async Task<List<Salon?>> ListSalonsAsync(int page, int pageSize)
     {

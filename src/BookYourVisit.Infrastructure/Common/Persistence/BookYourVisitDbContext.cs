@@ -1,4 +1,5 @@
-﻿using BookYourVisit.Domain.Absences;
+﻿using BookYourVisit.Application.Common.Interfaces;
+using BookYourVisit.Domain.Absences;
 using BookYourVisit.Domain.Messages;
 using BookYourVisit.Domain.Reviews;
 using BookYourVisit.Domain.Salons;
@@ -11,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace BookYourVisit.Infrastructure.Common.Persistence;
-public class BookYourVisitDbContext : DbContext
+public class BookYourVisitDbContext : DbContext, IUnitOfWork
 {
     public DbSet<Absence> Absences { get; set; } = null!;
     public DbSet<Address> Addresses { get; set; } = null!;

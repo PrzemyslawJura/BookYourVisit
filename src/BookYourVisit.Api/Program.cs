@@ -1,5 +1,5 @@
-using BookYourVisit.Infrastructure;
 using BookYourVisit.Application;
+using BookYourVisit.Infrastructure;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -12,7 +12,7 @@ public class Service
     public string Name { get; private set; } = null!;
     public string Description { get; private set; } = null!;
     public float Price { get; private set; }
-    public string Currency {  get; private set; }
+    public string Currency { get; private set; }
     public int Time { get; private set; }
     public bool IsDelete { get; private set; } = false;
     public Guid WorkerId { get; private set; }

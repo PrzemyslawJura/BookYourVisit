@@ -26,7 +26,7 @@ public class Absence
         WorkerId = workerId;
     }
 
-    private Absence() 
+    private Absence()
     {
     }
 }
