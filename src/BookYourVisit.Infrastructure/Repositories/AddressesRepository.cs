@@ -1,7 +1,6 @@
 ﻿using BookYourVisit.Application.Common.Interfaces;
 using BookYourVisit.Domain.Salons;
 using BookYourVisit.Infrastructure.Common.Persistence;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookYourVisit.Infrastructure.Repositories;
 public class AddressesRepository : IAddressesRepository
@@ -19,9 +18,7 @@ public class AddressesRepository : IAddressesRepository
 
     public async Task<Address?> GetBySalonIdAsync(Guid salonId)
     {
-        return await _dbContext.Addresses
-            .AsNoTracking()
-            .FirstOrDefaultAsync(address => address.SalonId == salonId);
+        return await _dbContext.Addresses.FindAsync(salonId);
     }
 
     public Task RemoveAddressAsync(Address address)

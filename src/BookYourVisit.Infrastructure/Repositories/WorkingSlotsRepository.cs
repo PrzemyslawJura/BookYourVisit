@@ -19,7 +19,7 @@ public class WorkingSlotsRepository : IWorkingSlotsRepository
 
     public async Task<WorkingSlot?> GetByIdAsync(Guid id)
     {
-        return await _dbContext.WorkingSlots.FirstOrDefaultAsync(workingSlot => workingSlot.Id == id);
+        return await _dbContext.WorkingSlots.FindAsync(id);
     }
 
     public async Task<List<WorkingSlot?>> ListBySalonIdAsync(Guid salonId)

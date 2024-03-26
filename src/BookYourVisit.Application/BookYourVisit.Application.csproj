@@ -18,7 +18,6 @@
     <Folder Include="Command\Visits\" />
     <Folder Include="Command\Users\" />
     <Folder Include="Command\Services\" />
-    <Folder Include="Command\Salons\" />
     <Folder Include="Command\Reviews\" />
     <Folder Include="Queries\Absences\" />
     <Folder Include="Queries\Addresses\" />

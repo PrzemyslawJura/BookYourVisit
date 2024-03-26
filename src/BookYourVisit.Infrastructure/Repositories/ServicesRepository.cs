@@ -20,7 +20,7 @@ public class ServicesRepository : IServicesRepository
 
     public async Task<Service?> GetByIdAsync(Guid id)
     {
-        return await _dbContext.Services.FirstOrDefaultAsync(service => service.Id == id);
+        return await _dbContext.Services.FindAsync(id);
     }
 
     public async Task<List<Service?>> ListByWorkerIdAsync(Guid workerId)

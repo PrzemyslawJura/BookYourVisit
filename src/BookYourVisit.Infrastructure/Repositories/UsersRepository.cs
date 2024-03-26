@@ -1,7 +1,6 @@
 ﻿using BookYourVisit.Application.Common.Interfaces;
 using BookYourVisit.Domain.Users;
 using BookYourVisit.Infrastructure.Common.Persistence;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookYourVisit.Infrastructure.Repositories;
 public class UsersRepository : IUsersRepository
@@ -20,7 +19,7 @@ public class UsersRepository : IUsersRepository
 
     public async Task<User?> GetByIdAsync(Guid id)
     {
-        return await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == id);
+        return await _dbContext.Users.FindAsync(id);
     }
 
     public Task RemoveUserAsync(User user)

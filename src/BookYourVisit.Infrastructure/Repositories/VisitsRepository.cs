@@ -20,7 +20,7 @@ public class VisitsRepository : IVisitsRepository
 
     public async Task<Visit?> GetByIdAsync(Guid id)
     {
-        return await _dbContext.Visits.FirstOrDefaultAsync(visit => visit.Id == id);
+        return await _dbContext.Visits.FindAsync(id);
     }
 
     public async Task<List<Visit?>> ListByServiceIdAsync(Guid serviceId)

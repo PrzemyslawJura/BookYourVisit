@@ -19,7 +19,7 @@ public class AbsencesRepository : IAbsencesRepository
 
     public async Task<Absence?> GetByIdAsync(Guid id)
     {
-        return await _dbContext.Absences.FirstOrDefaultAsync(absence => absence.Id == id);
+        return await _dbContext.Absences.FindAsync(id);
     }
 
     public async Task<List<Absence?>> ListByWorkerIdAsync(Guid workerId)
