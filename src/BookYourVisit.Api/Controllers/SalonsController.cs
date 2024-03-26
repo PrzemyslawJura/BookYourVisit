@@ -17,8 +17,6 @@ public class SalonsController : Controller
         _mediator = mediator;
     }
 
-    //ApiControler
-
     [HttpPost]
     public async Task<IActionResult> CreateSalon(CreateSalonRequest request)
     {
@@ -33,12 +31,29 @@ public class SalonsController : Controller
 
         var createSalonResult = await _mediator.Send(command);
 
-        if (createSalonResult.IsError == true)
+        return createSalonResult.Match(
+        salon => CreatedAtAction(
+        nameof(GetSalonById),
+        new
         {
-            return NotFound();
-        }
-
-        return Ok(createSalonResult);
+            name = salon.Name,
+            description = salon.Description,
+            mainPhoto = salon.MainPhoto,
+            photos = salon.Photos,
+            phoneNumber = salon.PhoneNumber,
+            email = salon.Email,
+            latitude = salon.Latitude,
+            longitute = salon.Longitude
+        },
+        new CreateSalonResponse(name: salon.Name,
+            description: salon.Description,
+            mainPhoto: salon.MainPhoto,
+            photos: salon.Photos,
+            phoneNumber: salon.PhoneNumber,
+            email: salon.Email,
+            latitude: salon.Latitude,
+            longitute: salon.Longitude)),
+       errors => Problem());
     }
 
     [HttpGet("{salonId:guid}")]
@@ -48,12 +63,18 @@ public class SalonsController : Controller
 
         var getSalonByIdResult = await _mediator.Send(command);
 
-        if (getSalonByIdResult.IsError == true)
-        {
-            return NotFound();
-        }
 
-        return Ok(getSalonByIdResult);
+        return getSalonByIdResult.Match(
+        salon => Ok(new CreateSalonResponse(
+            name: salon.Name,
+            description: salon.Description,
+            mainPhoto: salon.MainPhoto,
+            photos: salon.Photos,
+            phoneNumber: salon.PhoneNumber,
+            email: salon.Email,
+            latitude: salon.Latitude,
+            longitute: salon.Longitude)),
+        errors => Problem());
     }
 
     [HttpGet]
@@ -63,12 +84,17 @@ public class SalonsController : Controller
 
         var listSalonsResult = await _mediator.Send(command);
 
-        if (listSalonsResult.IsError == true)
-        {
-            return NotFound();
-        }
-
-        return Ok(listSalonsResult);
+        return listSalonsResult.Match(
+            salons => Ok(salons.ConvertAll(salon => new CreateSalonResponse(
+            name: salon.Name,
+            description: salon.Description,
+            mainPhoto: salon.MainPhoto,
+            photos: salon.Photos,
+            phoneNumber: salon.PhoneNumber,
+            email: salon.Email,
+            latitude: salon.Latitude,
+            longitute: salon.Longitude))),
+        errors => Problem());
     }
 
     //[HttpDelete("{salonId:guid}")]
